@@ -5,9 +5,7 @@
         "source.fixAll.eslint": "explicit"
     },
     "eslint.format.enable": true,
-    "eslint.validate": [
-        "javascript"
-    ],
+    "eslint.validate": ["javascript"],
     "window.zoomLevel": 1,
     "code-runner.executorMap": {
         "typescript": "npx ts-node --files"
