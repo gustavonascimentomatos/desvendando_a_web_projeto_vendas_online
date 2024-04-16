@@ -1,10 +1,21 @@
-import { BackgroundImage } from "../styles/loginScreen.styles";
+import {
+    BackgroundImage,
+    ContainerLogin,
+    ContainerLoginScreen,
+    LimitedContainer,
+    LogoImage,
+} from "../styles/loginScreen.styles";
 
 const LoginSreen = () => {
     return (
-        <div>
+        <ContainerLoginScreen>
             <BackgroundImage src="./background_web.jpg"></BackgroundImage>
-        </div>
+            <LimitedContainer>
+                <ContainerLogin>
+                    <LogoImage src="./logo.png"></LogoImage>
+                </ContainerLogin>
+            </LimitedContainer>
+        </ContainerLoginScreen>
     );
 };
 
