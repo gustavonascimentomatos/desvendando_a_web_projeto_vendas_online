@@ -2,8 +2,9 @@ body {
     margin: 0px;
 }
 
-
-:where(.css-dev-only-do-not-override-1kuana8).ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+:where(.css-dev-only-do-not-override-1kuana8).ant-btn-primary:not(:disabled):not(
+        .ant-btn-disabled
+    ):hover {
     color: #000000;
     background: #7f4a2a;
 }
