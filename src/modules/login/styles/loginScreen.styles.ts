@@ -16,24 +16,23 @@ export const BackgroundImage = styled.img`
     z-index: -1;
 `;
 
-export const LogoImage = styled.img`
-    max-width: 250px;
-`;
+export const LogoImage = styled.img``;
 
 export const ContainerLogin = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 22px;
+    background-image: linear-gradient(to right, #8d423c, #f4ba95);
+    padding: 0px 22px;
     width: 100%;
     height: 100vh;
-    background-color: darkgray;
-    max-width: 646px;
+    max-width: 450px;
 `;
 
 export const LimitedContainer = styled.div`
     width: 100%;
-    max-width: 498px;
+    max-width: 380px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 `;
