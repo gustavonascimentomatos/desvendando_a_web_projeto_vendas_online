@@ -6,5 +6,4 @@ export const ButtonAntd = styled(Button)`
     height: 40px;
     background-color: #7f4a2a;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
-    margin: 64px 0px 16px 0px;
 `;
