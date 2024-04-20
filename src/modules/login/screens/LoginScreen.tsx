@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useState } from "react";
 
-import { ButtonAntd } from "../../../shared/buttons/button/button.styles";
-import Input from "../../../shared/inputs/input/Input";
+import { ButtonAntd } from "../../../shared/componentes/buttons/button/button.styles";
+import Input from "../../../shared/componentes/inputs/input/Input";
+import { useRequests } from "../../../shared/hookes/useRequests";
 import {
     BackgroundImage,
     ContainerLogin,
@@ -15,6 +15,7 @@ import {
 const LoginSreen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { postRequest, loading } = useRequests();
 
     const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value);
@@ -24,22 +25,11 @@ const LoginSreen = () => {
         setPassword(event.target.value);
     };
 
-    const handleLogin = async () => {
-        await axios({
-            method: "post",
-            url: "http://localhost:8080/auth",
-            data: {
-                email: email,
-                password: password,
-            },
-        })
-            .then((result) => {
-                alert("Login realizado com sucesso!");
-                return result.data;
-            })
-            .catch(() => {
-                alert("Usuário ou Senha Inválido!");
-            });
+    const handleLogin = () => {
+        postRequest("http://localhost:8080/auth", {
+            email: email,
+            password: password,
+        });
     };
 
     return (
@@ -65,7 +55,7 @@ const LoginSreen = () => {
                         onChange={handlePassword}
                         value={password}
                     />
-                    <ButtonAntd type="primary" onClick={handleLogin}>
+                    <ButtonAntd loading={loading} type="primary" onClick={handleLogin}>
                         ENTRAR
                     </ButtonAntd>
                 </LimitedContainer>
