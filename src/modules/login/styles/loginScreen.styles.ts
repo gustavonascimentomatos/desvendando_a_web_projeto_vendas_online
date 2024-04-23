@@ -32,11 +32,11 @@ export const ContainerLogin = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to right, #8d423c, #f4ba95);
+    background-color: #d9d9d9;
     padding: 0px 22px;
     width: 100%;
     height: 100vh;
-    max-width: 450px;
+    max-width: 646px;
 `;
 
 export const LimitedContainer = styled.div`

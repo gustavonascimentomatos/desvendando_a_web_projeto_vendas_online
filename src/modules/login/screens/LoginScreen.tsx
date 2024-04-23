@@ -1,18 +1,20 @@
 import { useState } from "react";
 
 import { ButtonAntd } from "../../../shared/componentes/buttons/button/button.styles";
+import SVGLogo from "../../../shared/componentes/icons/SVGLogo";
 import Input from "../../../shared/componentes/inputs/input/Input";
+import { useGlobalContext } from "../../../shared/hookes/useGlobalContext";
 import { useRequests } from "../../../shared/hookes/useRequests";
 import {
     BackgroundImage,
     ContainerLogin,
     ContainerLoginScreen,
     LimitedContainer,
-    LogoImage,
     TitleLogin,
 } from "../styles/loginScreen.styles";
 
 const LoginSreen = () => {
+    const { accessToken, setAccessToken } = useGlobalContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { postRequest, loading } = useRequests();
@@ -26,6 +28,7 @@ const LoginSreen = () => {
     };
 
     const handleLogin = () => {
+        setAccessToken("New Token");
         postRequest("http://localhost:8080/auth", {
             email: email,
             password: password,
@@ -36,9 +39,9 @@ const LoginSreen = () => {
         <ContainerLoginScreen>
             <ContainerLogin>
                 <LimitedContainer>
-                    <LogoImage src="./logo_99.png"></LogoImage>
+                    <SVGLogo />
                     <TitleLogin level={2} type="secondary">
-                        LOGIN
+                        LOGIN ({accessToken})
                     </TitleLogin>
                     <Input
                         title="USUÁRIO"
@@ -61,7 +64,7 @@ const LoginSreen = () => {
                 </LimitedContainer>
             </ContainerLogin>
 
-            <BackgroundImage src="./background_web.jpg" />
+            <BackgroundImage src="./background_web.png" />
         </ContainerLoginScreen>
     );
 };
