@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useState } from "react";
 
+import { connectionAPIPost } from "../functions/connection/connectionAPI";
 import { useGlobalContext } from "./useGlobalContext";
 
 export const useRequests = () => {
@@ -23,20 +24,16 @@ export const useRequests = () => {
             });
     };
 
-    const postRequest = async (url: string, body: any) => {
+    const postRequest = async (url: string, body: unknown) => {
         setLoading(true);
 
-        const returnData = await axios({
-            method: "post",
-            url: url,
-            data: body,
-        })
+        const returnData = await connectionAPIPost(url, body)
             .then((result) => {
                 setNotification("SUCESSO", "success", "LOGIN REALIZADO COM SUCESSO!");
-                return result.data;
+                return result;
             })
-            .catch(() => {
-                setNotification("ERRO!", "error", "USUÁRIO OU SENHA INVÁLIDO!");
+            .catch((error: Error) => {
+                setNotification("ERRO!", "error", error.message);
             });
 
         setLoading(false);
