@@ -3,7 +3,6 @@ import { useState } from "react";
 import { ButtonAntd } from "../../../shared/componentes/buttons/button/button.styles";
 import SVGLogo from "../../../shared/componentes/icons/SVGLogo";
 import Input from "../../../shared/componentes/inputs/input/Input";
-import { useGlobalContext } from "../../../shared/hookes/useGlobalContext";
 import { useRequests } from "../../../shared/hookes/useRequests";
 import {
     BackgroundImage,
@@ -15,7 +14,6 @@ import {
 import { UserType } from "../types/UserType";
 
 const LoginSreen = () => {
-    const { accessToken, setAccessToken } = useGlobalContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { postRequest, loading } = useRequests();
@@ -28,12 +26,11 @@ const LoginSreen = () => {
         setPassword(event.target.value);
     };
 
-    const handleLogin = async () => {
-        const user = await postRequest<UserType>("http://localhost:8080/auth", {
+    const handleLogin = () => {
+        postRequest<UserType>("http://localhost:8080/auth", {
             email: email,
             password: password,
         });
-        setAccessToken(user?.accessToken || "");
     };
 
     return (
@@ -42,7 +39,7 @@ const LoginSreen = () => {
                 <LimitedContainer>
                     <SVGLogo />
                     <TitleLogin level={2} type="secondary">
-                        LOGIN ({accessToken})
+                        LOGIN
                     </TitleLogin>
                     <Input
                         title="USUÁRIO"
